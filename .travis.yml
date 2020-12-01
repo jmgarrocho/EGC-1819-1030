@@ -17,6 +17,13 @@ install:
 - pip install -r requirements.txt
 script:
 - cd decide
+- cp local_settings_travis.py local_settings.py
 - python ./manage.py test --keepdb
 notifications:
   email: false
+deploy:
+ provider: heroku
+ app: "prueba-egc99"
+ strategy: git
+  api_key:
+    secure: RqxBTIu4evhn1Qi/g8tg1kDmsNTF5qA/ykqdrVorZDZ9i4msP7K5eug+5khZWZTrZpmUo1QBGxsaXfWGh0HkUSOCHEOcwaEmC/XJyGLtdM9cbyPkhzxLzLbHnmqEUoRyi1wVTDHG246eao9IISDBeZrtkMbmww8qGZ1ZQg2kwwH41+r/NMxtOGR88gdCGfCk/MkZOfV8nbSZdZht4yQ662+NmMwiveskE7mhrgeqHwho87JE+DtKBaJoMoSh4cKbddybRmE6AXUnlTg7R/i29VRe7KgAbmi8kMllMAoKZCY5oyItxBx8/X3B8bhGLF3mXGah6DoPB8K64t5hhu3/qw3lfeIYYhqLyjm4yxCkTAQzdkzZErSPuH/yijoMrg+fmhzyGghySRre5IlRZJVA5U/Y8Lhmp05k4cKDMdDV2DqeKJYQVBRXhBH/4Mdq1riTgOwi8B26dqMOr+AswEYzSqSBOAJOejzODdG3yw5VOkgIgwHuNf4qGbX07Wz006Ffwk1jLv9T+bd0s8RJXwudv7OBT1WlUPAnxO3vmPqoEvi5zChgC4aJLqyiWHioGTmi4vofoieyoT6DpMPeiyIrcZLvuYteJcm9/hNlrWimYZn25vBPa9ST7TjuqJmju464DTWZ/mgiJmyRSuCsn9smff6YGqak5otNl4pnQca/kC8=
